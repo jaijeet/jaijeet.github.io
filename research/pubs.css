@@ -1,0 +1,91 @@
+body {
+	/*background-color:yellow;*/
+	/*background-color:tan;*/
+	background-color:white;
+	color: black;
+	margin-left: 1em;
+	font-family: Georgia, serif;
+}
+h1 {
+	background-color:#6495ed;
+	font-size:36pt;
+	color:#00ff00;
+	text-align:center;
+}
+h2 {
+	color:blue;
+	color:rgb(255,0,0);
+}
+
+hr {color:navy;}
+
+p {
+	background-color:#e0ffff;
+	font-size:11pt;
+	/*margin-left:15px;*/
+	vertical-align:text-top;
+	font-family:"Times New Roman", Times, serif;
+}
+
+a:link {color:blue;}
+a:visited {color:rgb(64,128,64);}
+a:hover {
+	/*color:black;*/
+	border-bottom: 1px gray dotted;
+}
+a:active {color:green;}
+
+div {
+	background-color:#b0c4de;
+}
+
+dl, dt{
+	background:#f6f6f6;
+	margin-left:0.5em;
+	/*line-height:1.3em;*/
+	margin-top: 0.2em;
+	margin-bottom: 0;
+	white-space:nowrap;
+	/*text-indent:-1.5em;*/
+	font-size:11pt;
+	/*font-family:"Times New Roman", Times, serif;*/
+	/* see www.w3schools.com/cssref/css_websafe_fonts.asp for web-safe font combinations */
+}
+
+dl, dt {
+	/*white-space:nowrap;*/
+	/*text-indent:-3em;*/
+	/*margin-left:1.5em;*/
+	/* border:1px solid green; */
+  	/*text-align:left;*/
+	/*height:50px;*/
+	/*background-color:green;*/
+	/*color:white;*/
+	/*margin-left:15px;*/
+	/*vertical-align:text-top;*/
+	/*text-transform:capitalize;*/
+	/*text-decoration:overline;*/
+	/*text-decoration:underline;*/
+	/*text-decoration:line-through;*/
+	/*text-decoration:blink;*/
+	/*letter-spacing:-0.2em;*/
+	/*line-height:100%;*/
+	/*line-height:2em;*/
+	/*word-spacing:30px;*/
+	/*padding-left:1em;*/
+	/*margin-left:1em;*/
+	/*display: list-item;*/
+	/*display: none;*/
+	/*display: block;*/
+
+}
+
+dd {
+	color: #222222;
+    margin: 0 0 0 110px;
+    padding: 0 0 0.5em 0;
+}
+
+dd > *:first-child {
+	margin-top: 0;
+}

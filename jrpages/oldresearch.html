@@ -1,0 +1,404 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title></title>
+</head>
+<body>
+<div id="layout-content">
+<h2>Automated computational macromodelling</h2>
+<p>In the late 80s and early 90s, the field of model-order reduction (MOR) (also known as 
+reduced-order modelling (ROM)) rose to prominence in VLSI CAD, chiefly in the context of timing analysis
+of the large interconnect networks within modern integrated circuits. These networks are often
+so large &ndash; some networks have as many as 60 million nodes &ndash; that simulating at the circuit level
+is infeasible. Model reduction uses mathematical and numerical techniques to reduce these large
+networks to much smaller ones, while conserving important input/output characteristics (such as
+delay metrics). This sub-area within CAD developed rapidly in the 1990s, with the rediscovery,
+adaptation, extension and application of concepts and ideas from disciplines in EE, CS and math.
+Most notably, iterative numerical algebra, Krylov-subspace methods, and concepts from classical
+linear dynamical system theory and control theory have led to a variety of advances. Upto 1998,
+however, MOR research was confined to linear time invariant (LTI) circuits; indeed, largely to RC
+and RLC networks.</p>
+<p>In 1998, using ideas from multitime methods and LTI MOR, we showed that linear
+time-varying systems could be reduced using Krylov methods. This work opened up a new sub-field
+within CAD, automated computational macromodelling, that has grown in importance and found
+application in electronics/VLSI, biological systems, MEMS and nanoelectronics. We have
+continued to work in this area and have made contributions to computational macromodelling techniques
+for linear time-varying, polynomial, strongly nonlinear and oscillatory systems.</p>
+<h3>Linear time-varying and weakly nonlinear systems</h3>
+<p>Following initial work in which we applied explicit moment matching to the linear periodically time-
+varying (LPTV) reduction problem <a href="PP1">PP1</a>, <a href="C15">C15</a>, we developed extensions based on using Krylov-
+subspace methods <a href="C20">C20</a>. We then introduced reduction methods for polynomial systems <a href="C22">C22</a>,
+<a href="BJ3">BJ3</a> as well. Our approach leveraged the MPDE (see Section A.2.1), applying it to LPTV systems
+to achieve a simple means of separating parametric and I/O time scales. Expanding parametric time
+variations using a finite basis (such as truncated Fourier), we converted LPTV systems into larger,
+artificial LTI systems, on which the established machinery of LTI MOR was brought to bear. Our
+automated macromodelling techniques for polynomial systems involved projection onto Kronecker
+products of underlying reduced linear spaces, and have close connections with Volterra analysis of
+weakly nonlinear systems.</p>
+<h4>Switching, sampling and frequency-converting RF/mixed-signal blocks</h4>
+<p>Linear or weakly nonlinear time-varying abstractions are well suited for systems that have linear or
+weakly nonlinear input<i>output characteristics, but involve strong &ldquo;parametric&rdquo; switching, sampling
+or modulation (e.g., for frequency up</i>down-conversion). We validated our LPTV reduction methods
+on a variety of analog, mixed-signal/RF and power electronic circuits that fall in this category,
+including switched-capacitor filters, mixers and DC-DC power converters. This work was awarded
+Best Paper at ASPDAC 1999 <a href="C22">C22</a>.</p>
+<h4>Power/ground-induced interference in large digital systems</h4>
+<p>Later, we applied and extended time-varying computational macromodelling to develop a technique
+and methodology for the problem of estimating interference &ldquo;noise&rdquo; induced in on-chip power and
+ground lines by large blocks of switching digital circuitry <a href="C35">C35</a>, <a href="C37">C37</a>, <a href="BJ12">BJ12</a>. Compared to prior
+approaches which were largely ad-hoc, our approach systematically extracts information from low-
+level circuit descriptions, by abstracting from them simple high-level ones for quick co-simulation
+with power<i>ground</i>substrate networks. We achieve this by applying time-varying macromodelling
+to elemental digital blocks to extract small macromodels suitable for predicting interference effects.
+Key features of our approach include: capturing time-varying effects (critical in digital interference
+mechanisms), a single macromodel that captures all interference effects (including power, ground
+and substrate interference), immediate applicability to any kind of device/technology, abstraction
+of second-order effects, hierarchical scalability to systems of arbitrary size, etc.. We have demon-
+strated typical accuracies of about 5% (considered excellent in this domain), with speedups over
+full simulation of 3-4 orders of magnitude for even relatively small digital blocks.</p>
+<h4>Operator-Krylov reduction of time-varying systems</h4>
+<p>For linear periodically time-varying (LPTV) systems, we developed a novel operator-based frame-
+work for model-order reduction by generalizing existing matrix-based Krylov-subspace algorithms
+to arbitrary function-space operators <a href="C47">C47</a>. Practical benefits of this approach include significantly
+enhanced algorithm and code modularity compared to previous LPTV-MOR approaches, which are
+based on a-priori discretization.</p>
+<h3>Trajectory methods for macromodelling strongly nonlinear systems</h3>
+<p>Later, we extended the above work on linear time-varying and weakly nonlinear systems to strongly
+nonlinear systems, by combining trajectory piecewise concepts from the work of Rewienski and
+White with our Krylov-based polynomial macromodelling methods.</p>
+<h4>Fidelity for both weak and strong nonlinearities</h4>
+<p>We developed a nonlinear macromodelling method generally applicable to circuits in which both
+weak and strong nonlinearities are important, such as the op-amps and comparators common in
+most mixed-signal <a href="BJ24">BJ24</a>, <a href="BJ20">BJ20</a>, <a href="C31">C31</a>, <a href="C40">C40</a>. Macromodels generated by our technique are
+general purpose, suitable for a wide range of time- and frequency-domain analyses important in
+mixed-signal design flows. The reduced models can be used as drop-in replacements to achieve fast
+system-level simulation, using a variety of time and frequency domain analyses (such as DC, AC,
+transient, harmonic-balance, etc..).</p>
+<h4>Timing model generation for digital blocks</h4>
+<p>Recently, we demonstrated the use and potential of automated computational macromodelling for
+extracting timing models of digital blocks, both combinatorial and sequential <a href="BJ24">BJ24</a>, <a href="C46">C46</a>, <a href="C65">C65</a>.
+Advantages over prior current-source models include rapid automated extraction from SPICE-level
+netlists, transparent retargettability to different design styles and technologies, and the ability to
+correctly and holistically account for complex input waveform shapes, nonlinear and linear loading,
+multiple input switching, effects of internal state, multiple I<i>Os, supply droop and substrate
+interference. We have demonstrated excellent fidelity on a variety of digital gates and interface circuitry,
+including multi-input NAND, NOR, XOR gates, full adders, multilevel cascades of gates, sequential
+latches and I</i>O buffers.</p>
+<h3>Nonlinear phase/amplitude macromodelling of self-oscillatory systems</h3>
+<p>Oscillators are ubiquitous in engineering and natural systems. They have many uses; for example,
+they are used to generate signals for frequency up/down-conversion in communication systems, as
+clocks in digital systems, within PLLs (i.e., phase-locked loops, widely used in electronics and 
+optics for synchronization, clock generation, frequency synthesis, signal conditioning) and so on. 
+Systems of coupled nonlinear oscillators arise in microwave and optical systems (e.g., power combining
+can be achieved using coupled oscillators), nanoelectronics (e.g., systems of coupled single-electron
+tunneling phase logic devices) and especially biology (heart tissue, circadian rhythms, neural 
+systems, etc.).</p>
+<p>Analysis and design of oscillators and oscillator-based systems is an important part of overall system
+design; however, such systems present unique computational challenges, addressing which calls for
+special methods and techniques. Numerical differential equation solution is not well suited for
+oscillator-based systems, for which it can be very inefficient ­ transient responses of oscillators can
+last hundreds of thousands of cycles, with each cycle requiring many small timesteps for accurate
+simulation of the embedded oscillator. The underlying cause is that oscillator phase errors can
+accumulate without limit ­ a problem that stems from a fundamental property of oscillators, neutral
+phase stability.</p>
+<p>To speed up simulation of oscillator and oscillator-based systems (such as PLLs), the use of phase
+macromodels has been common practice for decades. Phase macromodels attempt to capture the
+relationship between inputs to an oscillator and the phase of its output waveform, using equations
+that are much simpler than the full DAEs describing the oscillator. (Note that phase and its time-
+derivative the instantaneous frequency are typically the quantities of primary interest in most 
+oscillator applications.)</p>
+<p>Our contributions in this area center around theory and computational methods for extracting non-
+linear phase macromodels of amplitude-stable nonlinear oscillators. At the core of our approach
+<a href="BJ5">BJ5</a>, <a href="C17">C17</a>, <a href="C16">C16</a> is a rigorous theory (employing nonlinear analysis based on Floquet theory) for
+analyzing perturbations in oscillators described by arbitrary differential-algebraic equations. This
+theory results in a scalar nonlinear differential equation that governs the dynamics of the oscillator's
+phase. Using this nonlinear phase macromodel confers many advantages over prior linear phase
+macromodels. We have applied and validated our nonlinear oscillator macromodels extensively,
+predicting a variety of effects important in the design<i>analysis of mixed-signal</i>RF electronic, 
+biological and nanoscale systems, typically with far superior accuracy compared to prior linear
+oscillator macromodels. Speedups obtained range from 1 to 3 orders of magnitude .</p>
+<h4>Krylov-based numerical methods for phase macromodel extraction</h4>
+<p>Our nonlinear phase macromodel relies on a periodic vector function termed the perturbation
+projection vector or PPV. We have developed theory and computational techniques <a href="BJ9">BJ9</a>, <a href="C25">C25</a> to
+extract the PPV efficiently for large systems of nonlinear differential equations. These methods rely
+on links with the Jacobian matrices of steady-state methods like harmonic balance and shooting and
+exploit Krylov-subspace techniques.</p>
+<h4>Comprehensive phase/amplitude macromodels</h4>
+<p>Moreover, we have augmented our phase-only macromodel with dominant amplitude components
+­ again computed efficiently using Krylov methods, after deflation of the marginally-stable phase
+mode ­ to obtain comprehensive phase/amplitude macromodels for oscillators <a href="C55">C55</a> and <a href="C43">C43</a>
+(nominated for Best Paper at ICCAD 2004).</p>
+<h4>Multi-level extraction method for oscillator phase macromodels</h4>
+<p>Numerical methods for extracting oscillator PPV macromodels often face significant robustness
+and accuracy problems when confronted with digitally controlled oscillators (DCOs, core building
+blocks in digital phase-locked loops), due to large RC time-constants from gated capacitors. We
+have developed a hierarchical harmonic balance based technique <a href="C59">C59</a> for numerically extracting
+the PPV of DCOs from their SPICE-level circuit descriptions; the new method achieves superior
+convergence and PPV accuracy in the presence of large RC time-constants.</p>
+<h4>Trajectory-based phase macromodels</h4>
+<p>Further, we have extended the validity of these macromodels to broader regions of nonlinearity
+by applying ideas from trajectory macromodelling methods <a href="C64">C64</a>. These enhanced macromodels
+are useful for capturing, e.g., very large excursions in PLL control voltages during capture/lock,
+common in hopping frequency synthesizers.</p>
+<h4>Analytical phase macromodels of LC and ring oscillators</h4>
+<p>We have also been able to obtain analytical expressions for the PPVs of commonly-used electrical
+oscillator structures, such as negative-resistance LC oscillators <a href="C34">C34</a> and 3-stage ring oscillators
+<a href="BJ21">BJ21</a>, <a href="C44">C44</a>. Our purely analytical Floquet analysis of the three-stage ring oscillator contains
+several features of mathematical interest, including deep connections with a famous number known
+as the Golden Ratio or Divine Proportion. The formulae obtained offer direct insights into aspects of
+oscillator operation to designers and are useful for downstream analysis of effects such as injection
+locking <a href="C49">C49</a>.</p>
+<h4>Fast computational analysis of injection locking</h4>
+<p>One of the key features of our computationally-extracted nonlinear oscillator macromodels is that
+they correctly and efficiently capture injection locking, a nonlinear dynamical phenomenon in which
+an oscillator's natural frequency changes to match that of a small injected perturbation. The
+phenomenon is universal to oscillators (manifesting itself, for example, in the synchronized flashing of
+fireflies, the locked swinging of grandfather clocks located close to each other, etc.) and has been
+increasingly used in recent years in novel, high-speed, oscillator-based system designs.
+We have shown <a href="BJ11">BJ11</a> that prior linear macromodels are fundamentally incapable of capturing
+injection locking, which is an inherently nonlinear phenomenon. However, the nonlinear PPV
+macromodel is able to capture various forms of injection locking, including super- and sub-harmonic
+locking, unlocked sidebands, etc., over a wide range of injection strengths and frequencies. Our
+work generalises the classic 1946 work of Adler to apply to arbitrary oscillators; indeed, Adler's
+results constitute a special-case approximation of our result.</p>
+<h4>Phase-locked loop systems</h4>
+<p>We have validated the uses and benefits of PPV macromodels in system-level models of phase
+locked loops (PLLs). Entrainment, capture, lock and cycle-slipping are dynamical phenomena of
+considerable importance in PLLs. The problem of oscillator<i>PLL jitter caused by interference,
+typically from power</i>ground<i>substrate connections, has also assumed great practical importance
+in recent years. Prior phase macromodel based methods, all based on linear concepts, are often
+inaccurate, in some cases egregiously, for predicting dynamical transients and interference-induced
+jitter. We have shown that nonlinear PPV macromodels correctly and efficiently predict static phase
+offsets, capture, lock and cycle-slipping transients, as well as jitter due to supply</i>ground interference
+in oscillators and PLLs. We have developed design tools for extracting and using PPV macromodels
+in a design flow, and used these tools (prototyped in SPICE<tt></tt>) to design a novel PLL which uses
+injection locking to improve frequency acquisition time <a href="C57">C57</a>. This thread of our work has been
+developed and reported in the publications <a href="C45">C45</a> (awarded Best Paper at ASPDAC 2005) <a href="C66">C66</a>
+(invited paper), <a href="C61">C61</a>, <a href="C56">C56</a>, <a href="C51">C51</a> and <a href="C48">C48</a>.</p>
+<h4>Electronic, biochemical and nanoscale systems of coupled oscillators</h4>
+<p>We have applied PPV macromodels to simulate coupled systems of hundreds of thousands of oscil-
+lators (arising in bio- and nano-systems) and successfully validated their ability to predict emergent
+pattern formation and natural image processing in such networks <a href="C56">C56</a>, <a href="C66">C66</a> (invited paper).</p>
+<h4>Mammalian and Drosophila circadian rhythm systems</h4>
+<p>Circadian rhythms, or &ldquo;body clocks&rdquo;, control periodic daily changes in sleep<i>wakefulness, body
+temperature, blood pressure, heart rate and other physiological variables. These rhythms stem
+fundamentally from DNA-transcription biochemical oscillation mechanisms within individual cells and
+their nuclei. Quantitative understanding, simulation and control of circadian rhythms is of great
+practical importance: applications include devising medical remedies for rhythm disorders (e.g.,
+insomnia, fatigue, jet lag, etc.), synthetic biology (where a goal is to &ldquo;program&rdquo; biologically viable
+rhythms), artificially extending periods of wakefulness</i>alertness (e.g., for military purposes), and
+understanding<i>treating a wide variety of medical problems strongly linked with circadian rhythms
+(e.g., aspects of cancer, obesity, heart irregularities, psychological disorders, epilepsy, etc.).
+We have applied and validated nonlinear PPV phase macromodels on mammalian and Drosophila
+(fruit fly) circadian systems and successfully predicted the biologically crucial phenomenon of en-
+trainment or synchronization to day</i>night cycles. We have applied our macromodels to simulate
+systems of coupled circadian oscillators, predicting complex synchronization and locking amongst
+the oscillators. Further, we have incorporated parameter dependencies into our circadian phase
+macromodels and used them to predict endogenous period and phase changes in both endogenous
+and entrained rhythms. This thread of research has been developed and reported in <a href="C73">C73</a>.</p>
+<h2>Efficient computational methods for systems with widely separated time scales</h2>
+<p>We have made contributions to theory and numerical methods for steady-state and envelope 
+simulation of general systems of nonlinear differential equations. This thread of research is motivated by
+the need for efficient simulation of systems with widely separated rates of temporal variation, i.e.,
+waveforms in which feature both fast and slow characteristics. Applications abound in electronic,
+biological, nanoscale, mechanical and optical systems. The many orders of magnitude that often
+separate time scales of variation make standard numerical differential equation solvers inefficient
+for such circuits.</p>
+<h3>Multi-time Partial Differential Equations (MPDEs)</h3>
+<p>Several of our contributions are rooted in the concept of multi-time partial differential equations
+(MPDEs), which are a reformulation of ordinary differential equations as partial differential 
+equations in artificial time scales. The use of separate time scales makes it possible to develop 
+numerical techniques far more efficient than standard ones for systems with widely separated time scales.
+Starting with a re-discovery of the basic MPDE formulation (crucial concepts of which can be traced
+back to work of Petzold, Ngoya, and Brachtendorf), we systematically explored the MPDE for time
+and frequency domain steady-state and envelope applications, showing that essentially all previous
+steady-state and related techniques were in fact special cases obtained simply by choosing specific
+solution choices for the MPDE (<a href="C14">C14</a>, <a href="BJ6">BJ6</a>). By using time-domain bases for discretizing the
+MPDE, we derived numerical techniques for solving steady-state multi-tone and envelope problems
+entirely in the time domain. This work was awarded Best Paper at DAC 1997 <a href="C14">C14</a>. Later, we
+developed methods for multi-time analysis of systems with closely spaced tones <a href="C29">C29</a> <a href="BJ14">BJ14</a>.
+15</p>
+<h3>Warped time scales for MPDEs</h3>
+<p>The numerical efficiency obtainable from the MPDE formulation relies on certain &ldquo;compact 
+representation&rdquo; assumptions on the multivariate waveforms being solved for. We showed that these
+assumptions do not hold for oscillators with strong frequency modulation (FM), an important class
+of circuits. This difficulty led to the development of a more general MPDE than previously known,
+which we dubbed the Warped MPDE or WaMPDE <a href="C21">C21</a>, <a href="C24">C24</a>, <a href="BJ10">BJ10</a>. The WaMPDE not only
+restored efficiency for oscillator problems, but also presented unexpected and novel features such
+as the ability to extract an explicit, time-varying, local frequency in forced oscillators. This work
+was nominated for Best Paper at ASP-DAC 1999 <a href="C21">C21</a>.</p>
+<h3>Robust Fourier envelope methods</h3>
+<p>Using the MPDE formulation, we were also able to shed light on a number of apparently numer-
+ical problems that had been observed in Fourier envelope methods. We showed that the issues
+were deeper than simply numerical, stemming from that slow envelopes are not theoretically guar-
+anteed in general for every multi-time initial condition. We developed approaches to find &ldquo;good&rdquo;
+initial conditions that eliminate Fourier envelope problems in many situations <a href="C30">C30</a>, <a href="BJ15">BJ15</a>. We
+also performed a systematic analysis of the stability properties of time-domain methods for the
+MPDE <a href="C38">C38</a> <a href="BJ13">BJ13</a> (this work was nominated for the D.O. Pederson Best Paper award of
+IEEE Trans. Computer-Aided Design).</p>
+<h3>Multiple phase-condition and least-squares envelope methods</h3>
+<p>Envelope-following methods face special challenges when applied to oscillators because of their
+fundamental property of changing frequencies. This is especially true for circuits that switch dynam-
+ically between autonomous and driven behaviour (such as PLLs). By unifying and extending ideas
+from two prior oscillator envelope-following approaches (Petzold's method and the WaMPDE),
+we have developed general techniques for effective oscillator envelope following. Our technique
+uses two extra system unknowns, together with extra &ldquo;phase condition&rdquo; equations <a href="BJ22">BJ22</a>, <a href="C54">C54</a>
+or minimum least-squares solution <a href="C60">C60</a> to track quantities related to dynamical frequency/time-
+period changes. These advances confer significant robustness without appreciable computational
+overhead.</p>
+<h3>GeMPDE and oscillator AC</h3>
+<p>Standard small-signal analysis methods break down for oscillators because small-input perturba-
+tions result in large output changes, thus invalidating fundamental assumptions for small-signal
+analysis. We have developed a hierarchy of generalizations of the MPDE/WaMPDE, collectively
+termed the GeMPDE. Using the GeMPDE framework which restores validity and rigour to 
+smallsignal analysis of oscillators. A key feature of our approach is to solve for bivariate frequency
+variables, with the help of augmenting-phase-condition equations <a href="C53">C53</a>, <a href="BJ19">BJ19</a> and least-squares
+solution methods <a href="C58">C58</a>. Unlike prior oscillator analysis methods, which require special handling
+of the phase mode, our oscillator AC method provides both amplitude and frequency characteristics
+in a unified manner and is applicable to any kind of oscillator described by differential-algebraic
+equations.</p>
+<h3>Harmonic balance for systems with unbounded phase</h3>
+<p>A unique feature of oscillators is that small external perturbations can lead to unboundedly large
+changes in phase, thereby making standard harmonic balance (HB) inapplicable for simulation of
+systems containing nonlinear phase macromodels of oscillators. We have developed and validated
+a novel extension of HB that is capable of handling oscillator phase macromodels <a href="C63">C63</a>. Key to the
+new method, termed PPV-HB, is a formulation that separates unboundedly increasing phase terms
+from the bounded, periodic components.</p>
+<h3>Fast latch setup/hold characterization and abstraction</h3>
+<p>Characterizing setup and hold times of latches and registers is crucial for timing closure of large
+digital designs ­ typically taking months of computation in industry. By formulating the setup<i>hold
+time problem as a scalar nonlinear equation h( ) = 0, derived using state-transition functions,
+and then solving this equation by Newton-Raphson (NR), we have developed a novel approach
+<a href="C67">C67</a> for fast abstraction of setup</i>hold times from detailed low-level circuit descriptions of latches
+and registers. Furthermore, we have extended this method via Euler-Newton curve tracing and
+Moore-Penrose nonlinear Newton solution to characterize latch setup<i>hold times in an 
+interdependent manner <a href="C69">C69</a>, <a href="BJ26">BJ26</a>. This is a key enabler for pessimism reduction in timing via Setup</i>Hold
+Interdependence Aware Static Timing Analysis. This work was awarded Best Paper at DAC 2007
+<a href="C69">C69</a>.</p>
+<h2>Efficient prediction of noise and variability effects in systems</h2>
+<p>We have made contributions to theory and numerical techniques for computing noise and parameter
+variability effects in large mixed-signal and RF systems. Our contributions include fast 
+computational techniques for cyclostationary (&ldquo;mixing&rdquo;) noise, phase noise, and parameter sensitivities, and
+fast yield estimation for systems with parameter variations.</p>
+<h3>Cyclostationary noise: theory and efficient computational algorithms</h3>
+<p>We have made advances to the theory of, and developed efficient frequency-domain numerical
+techniques for, computing cyclostationary noise in large circuits. Our contribution addressed the 
+problem of correct and efficient computational noise analysis of circuits such as integrated on-chip RF
+mixers and switched-capacitor filters. Integrated RF circuits typically contain hundreds or 
+thousands of nonlinear devices, which pose a special challenge to traditional simulation and steady-state
+computation algorithms. Prior frequency-domain techniques for cyclostationary noise suffered from
+cubic computational complexity and were thus suited only for circuits of small size.
+We showed that the large harmonic power-spectral density (HPSD) matrices that arise in this 
+computational problem always have a block structure which can be decomposed into a sum/product form
+of Toeplitz and diagonal matrices. Using circulant approximations to the Toeplitz matrices, and 
+applying preconditioned iterative techniques for linear system solution, we reduced the computational
+complexity of the problem to approximately linear in circuit size, thus making cyclostationary noise
+analysis practical for on-chip RF circuit blocks with thousands of devices <a href="C11">C11</a>, <a href="C12">C12</a>, <a href="BJ2">BJ2</a>. This
+work was awarded Best Paper at ASP-DAC 1997 <a href="C11">C11</a>. In the process of formulating efficient
+noise computation algorithms, we also developed a cleaner, simpler mathematical formulation of
+cyclostationary noise in circuits than previously available. Using this, we derived simple linear 
+filtering conditions for restoring stationarity to cyclostationary noise <a href="BJ2">BJ2</a>, thereby extending classic
+work of Str¨om and Signell.</p>
+<h3>Theory and algorithms for nonlinear phase noise analysis of oscillators</h3>
+<p>We have addressed the long-standing theoretical and computational problem of correctly predicting
+the effect of perturbations and noise on the phase of free-running oscillators. The oscillator phase
+noise problem is important in several scientific and engineering disciplines and a precise 
+understanding of its mechanisms has been sought for decades. In electronics and chip design, phase noise/jitter
+is a leading cause of system performance degradation; incorrect prediction of phase noise has been
+a key factor in chip failure, resulting in expensive and time-consuming re-spins. In the optical do-
+main, the problem of predicting a laser's line width is essentially that of computing the phase-noise
+spectrum of an optical oscillator.</p>
+<p>While many attempts had been made to solve the phase noise problem, and correct solutions found
+for certain specific oscillators (e.g., the work of Lax for certain lasers, and that of Abidi for ring
+oscillators), a correct general theory applicable to all oscillators was not available prior to our work.
+Alternative theories, including popular recent ones, have been shown to suffer from fundamental
+inconsistencies and to be inadequate for general applicability, often leading to egregious artifacts
+such as predicting infinite noise power.</p>
+<p>Our work on oscillator phase noise <a href="C67">C67</a>, <a href="C17">C17</a>, <a href="C16">C16</a>, <a href="BJ5">BJ5</a> is based on a stochastic analysis of
+the nonlinear PPV phase macromodel described in Section A.1.3. We solved the nonlinear 
+differential equation comprising the PPV macromodel analytically for white stochastic inputs to obtain a
+statistical characterization of phase error, from which phase noise power spectral densities and jitter
+figures of merit were obtained. We showed that phase errors under Gaussian white noise 
+perturbations are a Gaussian random walk that becomes stationary in the asymptotic limit. We developed
+computational methods for predicting phase noise and jitter much more accurately than previously
+possible. We later developed accurate and efficient techniques <a href="C25">C25</a>, <a href="BJ9">BJ9</a> for computing the 
+Perturbation Projection Vector (PPV), a key Floquet quantity on which the above theory is based. We
+showed that it is possible to accurately and efficiently extract the PPV, with negligible computation,
+using a single linear solution at the oscillator's time-varying linearized steady state.</p>
+<h3>Variability in mixed-signal and biological systems</h3>
+<p>Parameter variability is of great importance and concern in VLSI design today; it is also of 
+crucial importance in biological systems. Our work in this area encompasses the exploration of novel
+bio-mimetic design techniques to counteract undesirable effects of variability, as well as CAD 
+techniques for propagating or abstracting the effects of low-level variability to higher-level effects.
+We have extended theory and numerical techniques for generating oscillator PPV phase 
+macromodels that incorporate variability in circuit parameters without the need for re-extraction. In other
+words, we have developed computational techniques for extracting parameterized oscillator phase
+macromodels, and validated these on systems of LC and ring oscillators <a href="C68">C68</a>. Further, we have
+established a simple formula for the parameter sensitivity of oscillator center frequency in terms of
+variability-enabled PPV components <a href="C70">C70</a>.</p>
+<p>Large parameter variations are the norm in most biological systems and there is considerable interest
+in characterizing and understanding such systems&rsquo; robustness to variability. Parameter sensitivities
+are also heavily utilized for biological model development and refinement. We have applied our
+variability-equipped PPV macromodels to mammalian and Drosophila circadian rhythm systems
+<a href="C73">C73</a>, and demonstrated the robustness of such systems to variations in a variety of physical 
+parameters.</p>
+<h3>Parametric yield calculation for SRAM cells and oscillators</h3>
+<p>Accurate estimation of the effects of threshold variations, in particular yield loss, is crucial during
+the design of robust SRAM cells and memory arrays in deep submicron technologies. We have
+developed novel efficient techniques to calculate yield loss due to access-time, static noise margin,
+etc.., related failures <a href="C71">C71</a>, <a href="C72">C72</a>. Our methods do not rely on Monte-Carlo techniques; instead,
+they find the boundary in parameter space between success and failure regions, and use quick 
+geometrical calculations to find the yield. The boundary curve is found efficiently via an Euler-Newton
+curve tracing technique, adapted from mixed-signal/RF simulation, that guides detailed SPICE-level
+simulation with accurate MOS device models. Our algorithms scale gracefully in the case of many
+parameters. This work <a href="C72">C72</a> has been awarded Best Paper at ASP-DAC 2008.</p>
+<h2>Miscellaneous contributions</h2>
+<h3>Describing function analysis of injection locking in LC oscillators</h3>
+<p>We have extended the classic describing function method, originally for analysing amplitude and
+frequency properties of undisturbed nonlinear LC oscillators, to develop a simple and intuitive, yet
+rigorous and general, method for understanding injection locking and predicting it quantitatively
+<a href="C62">C62</a>, <a href="C50">C50</a>.</p>
+<h3>Robust homotopy/continuation for large mixed-signal circuits</h3>
+<p>We have successfully solved the long-standing circuit simulation problem of finding a numerical
+DC operating point of large practical circuits in a robust, &ldquo;guaranteed&rdquo; manner. Our approach 
+involves the application and adaptation of globally-convergent numerical continuation methods. Prior
+approaches using these techniques had been largely unsuccessful for circuits containing more than
+a few tens of transistors. By developing novel two and three phase homotopy models with 
+decoupled continuation parameters for metal-oxide-semiconductor (MOS) and other transistor devices,
+together with robustness improvements to continuation algorithms for intricate high-dimensional
+tracks, we obtained a numerical DC algorithm that scaled well to large circuits and was well suited
+for broad practical application <a href="C8">C8</a>, apparently for the first time. This work was recognized by a
+citation for &lsquo;Extraordinary Achievement and Impact&rsquo; from Bell Laboratories. We also 
+identified connections between certain circuit topologies and exponential path-lengths of homotopy tracks
+<a href="BJ16">BJ16</a>. This development is a key step towards further, more generic, homotopies that confer the
+robustness we have achieved for MOS circuits to much wider classes of devices, as well as for
+steady-state equation systems, which are more complex than DC ones.</p>
+<h3>Time-domain simulation of lossy transmission lines (PhD topic)</h3>
+<p>During my PhD, I developed analytical time-domain methods for simulating lossy transmission
+lines. The problem was motivated by the long, thin interconnections that carry digital signals in
+multi-chip modules and large chips. The presence of resistive losses in transmission lines leads to
+waveform dispersion, in addition to delays and reflection effects, that can significantly affect the
+integrity of digital signals travelling through the lines.</p>
+<p>To simulate such effects without resorting to spatial discretization, I first developed exact analytical
+formulae for a lossy transmission line's impulse responses (kernels). I then developed analytical
+formulae for numerical convolution with these kernels <a href="C1">C1</a>. By tracking the internal state of the
+transmission line numerically, I was able to develop a modified convolution method that eliminated
+the quadratic-time computational complexity of generic numerical convolution <a href="C2">C2</a>, <a href="BJ1">BJ1</a>. Other
+aspects of this thread of research included extensions to lossy multi-conductor lines <a href="C1">C1</a>, purely
+RC lines <a href="C4">C4</a>, and to skin effect <a href="C3">C3</a>, <a href="BJ1">BJ1</a>. <a href="C2">C2</a> was awarded Distinguished Paper at ICCAD
+1991, while <a href="C1">C1</a> and <a href="C3">C3</a> were nominated for Best Paper at DAC 1991 and 1992.
+After graduation, I developed extensions to shaped RLC transmission lines <a href="C5">C5</a>. I also made minor contributions
+to a more general quadrature-based numerical technique for avoiding quadratic
+complexity, developed primarily by two collaborators <a href="C9">C9</a>.</p>
+<div id="footer">
+<div id="footer-text">
+Page generated 2011-10-13 20:04:18 PST, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
+</div>
+</div>
+</div>
+</body>
+</html>
