@@ -4,16 +4,20 @@
 .cmr-9{font-size:90%;}
 .cmbx-10{ font-weight: bold;}
 .cmti-10{ font-style: italic;}
-p.noindent { text-indent: 0em }
-td p.noindent { text-indent: 0em; margin-top:0em; }
-p.nopar { text-indent: 0em; }
-p.indent{ text-indent: 1.5em }
+.cmtt-10{font-family: monospace,monospace;}
+p{margin-top:0;margin-bottom:0}
+p.indent{text-indent:0;}
+p + p{margin-top:1em;}
+p + div, p + pre {margin-top:1em;}
+div + p, pre + p {margin-top:1em;}
+a { overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; hyphens: auto; }
 @media print {div.crosslinks {visibility:hidden;}}
 a img { border-top: 0; border-left: 0; border-right: 0; }
 center { margin-top:1em; margin-bottom:1em; }
 td center { margin-top:0em; margin-bottom:0em; }
 .Canvas { position:relative; }
 img.math{vertical-align:middle;}
+div.par-math-display, div.math-display{text-align:center;}
 li p.indent { text-indent: 0em }
 li p:first-child{ margin-top:0em; }
 li p:last-child, li div:last-child { margin-bottom:0.5em; }
@@ -30,7 +34,7 @@ div.obeylines-v p { margin-top:0; margin-bottom:0; }
 td.displaylines {text-align:center; white-space:nowrap;}
 .centerline {text-align:center;}
 .rightline {text-align:right;}
-div.verbatim {font-family: monospace; white-space: nowrap; text-align:left; clear:both; }
+pre.verbatim {font-family: monospace,monospace; text-align:left; clear:both; }
 .fbox {padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
 div.fbox {display:table}
 div.center div.fbox {text-align:center; clear:both; padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
@@ -67,11 +71,6 @@ table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
 .hline td, .cline td{ padding: 0; }
 .hline hr, .cline hr{border:none;border-top:1px solid black;}
 .tabbing-right {text-align:right;}
-span.TEX {letter-spacing: -0.125em; }
-span.TEX span.E{ position:relative;top:0.5ex;left:-0.0417em;}
-a span.TEX span.E {text-decoration: none; }
-span.LATEX span.A{ position:relative; top:-0.5ex; left:-0.4em; font-size:85%;}
-span.LATEX span.TEX{ position:relative; left: -0.4em; }
 div.float, div.figure {margin-left: auto; margin-right: auto;}
 div.float img {text-align:center;}
 div.figure img {text-align:center;}
@@ -95,6 +94,7 @@ table.pmatrix {width:100%;}
 span.bar-css {text-decoration:overline;}
 img.cdots{vertical-align:middle;}
 .partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}
+.chapterToc a, .chapterToc, .likechapterToc a, .likechapterToc, .appendixToc a, .appendixToc {line-height: 200%; font-weight:bold;}
 .index-item, .index-subitem, .index-subsubitem {display:block}
 div.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:left;}
 div.caption span.id{font-weight: bold; white-space: nowrap; }
@@ -103,7 +103,6 @@ p.bibitem { text-indent: -2em; margin-left: 2em; margin-top:0.6em; margin-bottom
 p.bibitem-p { text-indent: 0em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }
 .paragraphHead, .likeparagraphHead { margin-top:2em; font-weight: bold;}
 .subparagraphHead, .likesubparagraphHead { font-weight: bold;}
-.quote {margin-bottom:0.25em; margin-top:0.25em; margin-left:1em; margin-right:1em; text-align:justify;}
 .verse{white-space:nowrap; margin-left:2em}
 div.maketitle {text-align:center;}
 h2.titleHead{text-align:center;}
@@ -111,50 +110,15 @@ div.maketitle{ margin-bottom: 2em; }
 div.author, div.date {text-align:center;}
 div.thanks{text-align:left; margin-left:10%; font-size:85%; font-style:italic; }
 div.author{white-space: nowrap;}
-.quotation {margin-bottom:0.25em; margin-top:0.25em; margin-left:1em; }
-.abstract p {margin-left:5%; margin-right:5%;}
+div.abstract p {margin-left:5%; margin-right:5%;}
 div.abstract {width:100%;}
+.abstracttitle{text-align:center;margin-bottom:1em;}
 .uline{ text-decoration:underline; }
 .uuline{ text-decoration:underline; }
 span.sout {text-decoration: line-through }
 span.xout {text-decoration: line-through }
 span.uwave {text-decoration:underline }
 /* end css.sty */
-
-/* this is what controls the spacing between paper items */
-/*
-dd {
-  margin-bottom: -0.7em;
-}
-*/
-
-/* fixes alignment problems between labels and entries 
- * See https://stackoverflow.com/questions/35497542/align-left-dl-horizontal-dt-and-dd*/
-/* Doesn't fix much
-.container dt,.container dd {
-  width:auto;
-  margin-left:auto;
-  display:inline-block;
-}
-*/
-
-/* dl { */
-  /* float: left;  */
-  /*
-  clear: both;
-  line-height: inherit;
-  vertical-align: baseline;
-  text-align: baseline;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: baseline;
-  width: 100%;
-  margin: auto;
-  */
-  /* border: 1px solid red; */
-/* } */
-
 
 /* important: changes font size and other characteristics of the heading - and the labels) */
 dt {
@@ -175,42 +139,45 @@ dt {
 /* important: resets the font size and other characteristics of the labels and the entries from that set by dt above */
 dd dt {
   float: left; /* important: puts dt and dd on the same line */
-  display: inline-block; 
-  clear: both;
+  color: maroon; /* applies only to dt (description) */
+  line-height: 100%; /* removing it messes things up */
+  font-size: 100%; /* removing this mess up the formatting */
+  text-decoration: none; /* removing this underlines Pxxx */
+  /* display: inline-block; */
+  /* clear: both; */
   /* margin-right: 0.5em; */
   /* margin-left: 0em; */
-  font-style: normal;
-  font-weight: normal;
-  color: maroon;
-  line-height: 100%;
+  /* font-style: normal; */
+  /* font-weight: normal; */
   /* padding-bottom: -2em; */
   /* margin-top: 0em; */
   /* margin-bottom: 1em; */
   /* text-align: left; */
-  font-size: 100%; /* why doesn't this override the above dt only font-size? */
-  vertical-align: baseline;
-  text-align: baseline;
-  text-decoration: none;
+  /* vertical-align: baseline; */
+  /* text-align: baseline; */
 }
 
 /* move the margin a bit to the left, provide a slightly grey background */
 /* dd.list2 { */
-dd .list2 {
-  overflow:hidden;
-  background:#f6f6f6;
+/* dd.list2 { */
+/* <dl class="list2"><dt class="list"> [P161] </dt><dd class="list"> ... </dd></dt> */
+.list2 { /* class=list2 is used by htlatex for dl (see prev line), ie, to tag the entire list */
+  background:#f6f6f6; /* slightly gray background */
+  margin: 0 0 0 -3em; /* Important: the last one controls tabbing of each label from the left */
+  line-height: 130%; /* less than 130% messes up layout/formatting */
+  /* font-size: 100%; */
+  padding: 1em 0em 0 0; /* first one controls the gap between Publications from JRgroup and the list */
+  /* width: 50%; changes the width of the description block; don't mess with it */
+  /* vertical-align: baseline; */
+  /* text-align: baseline; */
+  /* overflow:hidden; */
   /* margin-left: -1em; */
-  MARGIN: 0 0 0 -3em; /* Important: the last one controls tabbing of each label from the left */
   /* float: left; */
   /* white-space: nowrap; important: each entry on only 1 line */
   /* padding-bottom: -2em;  */
   /* text-align: bottom; no effect */
-  vertical-align: baseline;
-  text-align: baseline;
   /* float: left; */
   /* margin-bottom: -1em; */
-  line-height: 150%;
-  font-size: 100%;
-  PADDING: 0; 
 }
 
 /* increases the spacing between entries a bit */
@@ -245,16 +212,6 @@ h2 {
 
 hr {color:navy;}
 */
-
-/* This is important: changes the font size, type, etc of each item's entry, but not the label */
-p {
-    line-height: 100%;
-	/* font-size:11pt; */
-	/* vertical-align: baseline; */
-	vertical-align: baseline;
-	font-family:"Times New Roman", Times, serif;
-}
-	/*margin-left:15px;
 
 a:link {color:blue;}
 a:visited {color:rgb(64,128,64);}
@@ -319,14 +276,22 @@ dd {
 }
 */
 
-dd { /* Important */
-   /* margin x y z w: x=space above, y=space to the right, z=space below,w=space to the left (and also affects line wrap alignment) */
-   margin: 0em 0em -0.5em 3.5em; /* >=3.5em somehow lines up wrapped lines        perfectly */
-   padding: 0 0 0.0em 0;
+dt { /* REALLY IMPORTANT: for aligning [Pxxx] and the entry */
+   /* (presumably) padding x y z w: x=space above, y=space to the right, z=space below,w=space to the left */
+   padding: 0.3em 0 0.0em 0;
 }
 
 
-/* important: makes all the first bullet entry have 0 topmargin (aligns the first entry with its label, otherwise it is misaligned) */
+dd { /* Important */
+   /* margin x y z w: x=space above, y=space to the right, z=space below,w=space to the left (and also affects line wrap alignment) */
+   /* margin: 0em 0em -0.5em 3.5em; /* >=3.5em somehow lines up wrapped lines    perfectly */
+   margin: -0em 0em -0.0em 3.5em; /* >=3.5em somehow lines up wrapped lines    perfectly */
+   padding: 0em 0 0em 0;
+   /* line-height: 1.7em; don't define this; pretty much any value messes up the formatting */
+}
+
+/* important: makes all but the first bullet entry have 0 topmargin (aligns the first entry with its label, otherwise it is misaligned) */
 dd > *:first-child {
 	margin-top: 0;
 }
+
