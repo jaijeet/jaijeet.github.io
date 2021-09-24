@@ -48,14 +48,55 @@
 <h1>Research in Jaijeet Roychowdhury's group</h1>
 <p>Our research encompasses:</p>
 <ul>
-<li><p>machine learning techniques and applications for dynamical systems.</p>
-</li>
 <li><p>next-generation computing schemes.</p>
+</li>
+<li><p>machine learning techniques and applications.</p>
 </li>
 <li><p>mathematical formulations, computational algorithms and software tools for designing, understanding, predicting and verifying the behaviour of cyber-physical, electronic, biological and nanoscale systems.</p>
 </li>
 </ul>
 <h2>Selected ongoing research projects</h2>
+<h3><b>OIM: Oscillator Ising Machines</b> </h3>
+<table class="imgtable"><tr><td>
+<a href="figures/OIM-hardware.png"><img src="figures/OIM-hardware.png" alt="Hardware (CMOS) implementations of OIM." width="300px" /></a>&nbsp;</td>
+<td align="left"><p>In recent years, a class of techniques has emerged that uses the innate physics of specialized analog hardware to solve difficult combinatorial optimization (CO) problems.
+These so-called Ising machines implement and solve the Ising model, a graph-based discrete optimization formulation into which many CO problems can be mapped.
+In 2017, we showed that appropriately-designed networks of interacting (i.e., coupled) oscillators function as Ising machines.
+Such Oscillator Ising Machines (OIMs) are based on a close mathematical connection between the phase dynamics of coupled oscillators and the cost function of the Ising model, called the Hamiltonian. 
+We have shown that OIM performs competitively on the NP-complete MAX-CUT problem, finding superior cuts for several problems in a widely-used set of MAX-CUT benchmarks.</p>
+<p>Unlike prior Ising machine schemes, OIM is ideally suited for on-chip integration using, e.g., ring oscillators in well-established CMOS technologies.
+This brings several advantages, including easy scaling to large problem sizes (i.e., many Ising &ldquo;spins&rdquo;), small size, low power, high speed operation and large-scale production at low cost.
+The power of OIM stems from the physics/mathematics of specially-designed oscillator networks, hence advanced or novel device technologies are not needed, though these can provide additional benefits if they are competitive against standard industrial CMOS technologies in practice.</p>
+<p>The figure on the left shows the progression of our CMOS implementations of OIM.
+(a) in the upper figure shows OIMs of size 8, 32, and 64 built on breadboard and PCB using easily available discrete electronic components; (b) shows a 240-spin PCB version implementing a Chimera-like topology; (c) and (d) show histograms of results obtained by the 240-spin OIM.
+The lower figure is a die photograph of a recently-fabricated, custom-designed, IC version of OIM.</p>
+<p>OIM received the <a href="https://www.bell-labs.com/institute/blog/classical-spin-quantum-computing/">Bell Labs Prize in 2019</a>, the <a href="https://eecs.berkeley.edu/news/2019/05/tianshi-wang-and-jaijeet-roychowdhury-win-ucnc-2019-best-paper-award">Best Paper Award at UCNC 2019</a> and a <a href="https://vcresearch.berkeley.edu/bakarfellows/profile/jaijeet-roychowdhury">Bakar Spark Award</a> in 2020.</p>
+<p>Selected publications: <a href="https://jaijeet.github.io/research/PDFs/2021-05-05-Springer-Natural-Computing--Wang-Wu-Nobel-Roychowdhury--OIM--invited.pdf">P157</a>, <a href="https://jaijeet.github.io/research/PDFs/2019-06--UCNC-LNCS-Wang-Roychowdhury-chapter-on-OIM.pdf">P155</a>, <a href="https://jaijeet.github.io/research/PDFs/2019-DAC-Wang-Wu-Roychowdhury--New-Computational-Results-and-Hardware-Prototypes-for-Oscillator-based-Ising-Machines.pdf">P154</a>, and <a href="https://jaijeet.github.io/research/PDFs/2017-09-23--arXiv-Wang-Roychowdhury--Oscillator-based-Ising-Machine.pdf">P152</a> on our <a href="https://jaijeet.github.io/research/pubs.html">publications page</a>.</p>
+</td></tr></table>
+<h3><b>MAPP: The Berkeley Model and Algorithm Prototyping Platform</b> </h3>
+<table class="imgtable"><tr><td>
+<a href="figures/MAPP-graphic.png"><img src="figures/MAPP-graphic.png" alt="MAPP: FEFET homotopy and multi-physics ModSpec." width="300px" /></a>&nbsp;</td>
+<td align="left"><p>MAPP is a MATLAB/Octave based platform for quickly prototyping models and analysis algorithms for dynamical systems.
+It aims to alleviate a long-standing problem afflicting research in modelling and simulation of continuous systems: the lack of a well-structured infrastructure that is general, comes with standard models and algorithms, is usefully documented, and is easy to use, program in and extend.
+MAPP comes with a number of analysis algorithms for solving systems of nonlinear algebraic and/or differential equations, including DC, AC, transient, homotopy, harmonic balance, shooting, variability using polynomial chaos, etc..
+It also has specialized algorithms for oscillators, including phase macromodel extraction, Adlerization and injection locking analysis.
+A companion tool, VAPP (Verilog-A Parser and Processor) translates Verilog-A model descriptions into MAPP's native model format (ModSpec).
+MAPP is designed for user-extensible multi-physics support and is suitable for CPS, electronic, bio-chemical, optical, mechanical, thermal, spintronic and other application domains.
+
+
+
+
+
+
+
+</p>
+<p>The upper figure on the left depicts folding voltage-current characteristic curves of a ferroelectric FET device, obtained using MAPP's homotopy analysis.
+The lower figure is a depiction of the structuring of ModSpec, MAPP's model description format.</p>
+<p>More information: <a href="https://github.com/jaijeet/MAPP/wiki/">MAPP on github</a>, <a href="https://github.com/jaijeet/VAPP/wiki/">VAPP on github</a>.</p>
+<p>Selected publications: <a href="http://people.eecs.berkeley.edu/~tianshi/publications/snapback2016CICC--2017-07.pdf">P147</a>, <a href="https://nanohub.org/resources/26199">P146</a>, <a href="http://people.eecs.berkeley.edu/~tianshi/publications/NEMO2016-tianshi-WE1-2.pdf">P144</a>, <a href="https://arxiv.org/pdf/1605.04897.pdf">P143</a>, <a href="https://jaijeet.github.io/research/PDFs/2015-09--CICC-Wang-Aadithya-Wu-Yao-Roychowdhury--MAPP-invited.pdf">P141</a>, <a href="https://jaijeet.github.io/research/PDFs/2015-06--DAC-Wang-Roychowdhury--PHLOGON-design-tools.pdf">P139</a>, <a href="https://jaijeet.github.io/research/PDFs/2014-09-CICC-Wu-Roychowdhury-distortion-contributions-via-HBadj.pdf">P135</a>, <a href="https://jaijeet.github.io/research/PDFs/2012-06-DAC-Meir-Roychowdhury-BLAST.pdf">P126</a> and <a href="https://jaijeet.github.io/research/PDFs/2011-11-Amsallem-Roychowdhury-ICCAD-ModSpec.pdf">P122</a> on our <a href="https://jaijeet.github.io/research/pubs.html">publications page</a>.</p>
+</td></tr></table>
+<p><a href="#OOF" id="1_arrows" class="arrows" onclick="expand_collapse('1');">&#9660</a><span style="font-size:115%;">     Click on the arrow for more </span>
+<div id="1" style="display:none;">
 <h3><b>ABCD: Accurate Booleanization of Continuous Dynamics</b></h3>
 <table class="imgtable"><tr><td>
 <a href="figures/ABCD-graphic.png"><img src="figures/ABCD-graphic.png" alt="ABCD: eye prediction and FSM of non-ideal latch." width="300px" /></a>&nbsp;</td>
@@ -77,7 +118,7 @@ The lower figure on the left depicts the generated FSM of a latch that is clocke
 Two extra
 &ldquo;illegal&rdquo; states indicate improper latching if the data is not stable for 2 or more clock cycles.</p>
 <p>More information: <a href="https://www2.eecs.berkeley.edu/Pubs/TechRpts/2016/EECS-2016-146.html">Karthik Aadithya's dissertation</a>.</p>
-<p>Selected publications: <a href="http://potol.eecs.berkeley.edu/~jr/research/PDFs/2015-01--ASPDAC-Aadithya-Ray-Roychowdhury--BEE.pdf">P137</a>, <a href="http://potol.eecs.berkeley.edu/~jr/research/PDFs/2014-01-ASPDAC-Aadithya-et-al--ABCD-NL.pdf">P131</a>, <a href="http://potol.eecs.berkeley.edu/~jr/research/PDFs/2013-06-DAC-Aadithya-Roychowdhury-ABCD-L.pdf">P129</a>, <a href="http://potol.eecs.berkeley.edu/~jr/research/PDFs/2012-06-DAC-Aadithya-Roychowdhury-DAE2FSM.pdf">P125</a> and <a href="http://potol.eecs.berkeley.edu/~jr/research/PDFs/2011-01-ASPDAC-Gu-Roychowdhury-FSM-abstraction-of-continuous-systems.pdf">P115</a> on our <a href="http://potol.eecs.berkeley.edu/~jr/research/pubs.html">publications page</a>.</p>
+<p>Selected publications: <a href="https://jaijeet.github.io/research/PDFs/2015-01--ASPDAC-Aadithya-Ray-Roychowdhury--BEE.pdf">P137</a>, <a href="https://jaijeet.github.io/research/PDFs/2014-01-ASPDAC-Aadithya-et-al--ABCD-NL.pdf">P131</a>, <a href="https://jaijeet.github.io/research/PDFs/2013-06-DAC-Aadithya-Roychowdhury-ABCD-L.pdf">P129</a>, <a href="https://jaijeet.github.io/research/PDFs/2012-06-DAC-Aadithya-Roychowdhury-DAE2FSM.pdf">P125</a> and <a href="https://jaijeet.github.io/research/PDFs/2011-01-ASPDAC-Gu-Roychowdhury-FSM-abstraction-of-continuous-systems.pdf">P115</a> on our <a href="https://jaijeet.github.io/research/pubs.html">publications page</a>.</p>
 </td></tr></table>
 <h3><b>PHLOGON: <i>Ph</i>ase <i>Log</i>ic using <i>O</i>scillatory <i>N</i>anosystems</b></h3>
 <table class="imgtable"><tr><td>
@@ -101,32 +142,8 @@ As such, almost any physical oscillator (electronic, mechanical, nanoscale, biol
 The lower figure is a breadboard implementation of a PHLOGON finite state machine (1-bit serial adder, using a von Neumann architecture) built using CMOS ring oscillators.</p>
 <p>More information: <a href="http://people.eecs.berkeley.edu/~tianshi/research.html">Tianshi Wang's research page</a>.
 </p>
-<p>Selected publications: <a href="https://arxiv.org/pdf/1709.08102.pdf">P152</a>, <a href="https://arxiv.org/pdf/1710.01056.pdf">P150</a>, <a href="http://potol.eecs.berkeley.edu/~jr/research/PDFs/2015-11--ProcIEEE-Roychowdhury--PHLOGON.pdf">P142</a>, <a href="http://potol.eecs.berkeley.edu/~jr/research/PDFs/2015-06--DAC-Wang-Roychowdhury--PHLOGON-design-tools.pdf">P139</a>, <a href="http://onlinelibrary.wiley.com/doi/10.1002/nme.4790/abstract">P138</a>, <a href="http://link.springer.com/book/10.1007/978-3-319-08123-6/page/2">P133</a> and <a href="http://potol.eecs.berkeley.edu/~jr/research/PDFs/2012-03-DATE-Neogy-Roychowdhury-SubharmonicIL-multistable-lock-w-JRupdates-2013-02-18.pdf">P124</a> on our <a href="http://potol.eecs.berkeley.edu/~jr/research/pubs.html">publications page</a>.</p>
+<p>Selected publications: <a href="https://arxiv.org/pdf/1709.08102.pdf">P152</a>, <a href="https://arxiv.org/pdf/1710.01056.pdf">P150</a>, <a href="https://jaijeet.github.io/research/PDFs/2015-11--ProcIEEE-Roychowdhury--PHLOGON.pdf">P142</a>, <a href="https://jaijeet.github.io/research/PDFs/2015-06--DAC-Wang-Roychowdhury--PHLOGON-design-tools.pdf">P139</a>, <a href="http://onlinelibrary.wiley.com/doi/10.1002/nme.4790/abstract">P138</a>, <a href="https://jaijeet.github.io/research/PDFs/2014-07--UCNC-LNCS-Wang-Roychowdhury-chapter-on-PHLOGON.pdf">P133</a> and <a href="https://jaijeet.github.io/research/PDFs/2012-03-DATE-Neogy-Roychowdhury-SubharmonicIL-multistable-lock-w-JRupdates-2013-02-18.pdf">P124</a> on our <a href="https://jaijeet.github.io/research/pubs.html">publications page</a>.</p>
 </td></tr></table>
-<h3><b>MAPP: The Berkeley Model and Algorithm Prototyping Platform</b> </h3>
-<table class="imgtable"><tr><td>
-<a href="figures/MAPP-graphic.png"><img src="figures/MAPP-graphic.png" alt="MAPP: FEFET homotopy and multi-physics ModSpec." width="300px" /></a>&nbsp;</td>
-<td align="left"><p>MAPP is a MATLAB/Octave based platform for quickly prototyping models and analysis algorithms for dynamical systems.
-It aims to alleviate a long-standing problem afflicting research in modelling and simulation of continuous systems: the lack of a well-structured infrastructure that is general, comes with standard models and algorithms, is usefully documented, and is easy to use, program in and extend.
-MAPP comes with a number of analysis algorithms for solving systems of nonlinear algebraic and/or differential equations, including DC, AC, transient, homotopy, harmonic balance, shooting, variability using polynomial chaos, etc..
-It also has specialized algorithms for oscillators, including phase macromodel extraction, Adlerization and injection locking analysis.
-A companion tool, VAPP (Verilog-A Parser and Processor) translates Verilog-A model descriptions into MAPP's native model format (ModSpec).
-MAPP is designed for user-extensible multi-physics support and is suitable for CPS, electronic, bio-chemical, optical, mechanical, thermal, spintronic and other application domains.
-
-
-
-
-
-
-
-</p>
-<p>The upper figure on the left depicts folding voltage-current characteristic curves of a ferroelectric FET device, obtained using MAPP's homotopy analysis.
-The lower figure is a depiction of the structuring of ModSpec, MAPP's model description format.</p>
-<p>More information: <a href="https://github.com/jaijeet/MAPP/wiki/">MAPP on github</a>, <a href="https://github.com/jaijeet/VAPP/wiki/">VAPP on github</a>.</p>
-<p>Selected publications: <a href="http://people.eecs.berkeley.edu/~tianshi/publications/snapback2016CICC--2017-07.pdf">P147</a>, <a href="https://nanohub.org/resources/26199">P146</a>, <a href="http://people.eecs.berkeley.edu/~tianshi/publications/NEMO2016-tianshi-WE1-2.pdf">P144</a>, <a href="https://arxiv.org/pdf/1605.04897.pdf">P143</a>, <a href="http://potol.eecs.berkeley.edu/~jr/research/PDFs/2015-09--CICC-Wang-Aadithya-Wu-Yao-Roychowdhury--MAPP-invited.pdf">P141</a>, <a href="http://potol.eecs.berkeley.edu/~jr/research/PDFs/2015-06--DAC-Wang-Roychowdhury--PHLOGON-design-tools.pdf">P139</a>, <a href="http://potol.eecs.berkeley.edu/~jr/research/PDFs/2014-09-CICC-Wu-Roychowdhury-distortion-contributions-via-HBadj.pdf">P135</a>, <a href="http://potol.eecs.berkeley.edu/~jr/research/PDFs/2012-06-DAC-Meir-Roychowdhury-BLAST.pdf">P126</a> and <a href="http://potol.eecs.berkeley.edu/~jr/research/PDFs/2011-11-Amsallem-Roychowdhury-ICCAD-ModSpec.pdf">P122</a> on our <a href="http://potol.eecs.berkeley.edu/~jr/research/pubs.html">publications page</a>.</p>
-</td></tr></table>
-<p><a href="#OOF" id="1_arrows" class="arrows" onclick="expand_collapse('1');">&#9660</a><span style="font-size:115%;">     Click on the arrow for more </span>
-<div id="1" style="display:none;">
 <h3><b>Predicting the Impact of Random Telegraph Noise on SRAMs, oscillators and PLLs</b> </h3>
 <table class="imgtable"><tr><td>
 <a href="figures/SRAM-with-RTN-and-variability.png"><img src="figures/SRAM-with-RTN-and-variability.png" alt="SRAM errors with RTN and variability" width="300px" /></a>&nbsp;</td>
@@ -137,13 +154,13 @@ account its non-stationary temporal nature.</p>
 as predicted by MUSTARD.
 The red dots depict SRAM designs that would function correctly in the absence of RTN, but fail in its presence.</p>
 <p>Selected publications:
-<a href="http://potol.eecs.berkeley.edu/~jr/research/PDFs/2011-03-DATE-Aadithya-etal-SRAMRTNAnalysisSAMURAI.pdf">P117</a> and
-<a href="http://potol.eecs.berkeley.edu/~jr/research/PDFs/2011-06-DAC-Aadithya-etal-MUSTARD.pdf">P119</a>
-on our <a href="http://potol.eecs.berkeley.edu/~jr/research/pubs.html">publications page</a>.</p>
+<a href="https://jaijeet.github.io/research/PDFs/2011-03-DATE-Aadithya-etal-SRAMRTNAnalysisSAMURAI.pdf">P117</a> and
+<a href="https://jaijeet.github.io/research/PDFs/2011-06-DAC-Aadithya-etal-MUSTARD.pdf">P119</a>
+on our <a href="https://jaijeet.github.io/research/pubs.html">publications page</a>.</p>
 </td></tr></table>
 <div id="footer">
 <div id="footer-text">
-Page generated 2020-12-30 17:49:53 PST, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
+Page generated 2021-09-24 15:35:41 PDT, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
 </div>
 </div>
 </td>
